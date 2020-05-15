@@ -1,8 +1,0 @@
-List of trains, going to a given destination:
-Train: destination = 'Chicago', trainNumber = 831, departureTime = 17.04.2020 20:16, numberOfSeats = {COMMON=68, COMPARTMENT=31, OPEN_COUPES=66, LUXURY=80}
-
-List of trains, going to a given destination and living after a given date:
-Train: destination = 'Puebla', trainNumber = 212, departureTime = 08.03.2021 13:10, numberOfSeats = {COMMON=40, COMPARTMENT=38, OPEN_COUPES=80, LUXURY=58}
-
-List of trains with common seats, going to a given destination:
-Train: destination = 'ACCRA', trainNumber = 855, departureTime = 24.11.2021 15:30, numberOfSeats = {COMMON=6, COMPARTMENT=64, OPEN_COUPES=3, LUXURY=49}
