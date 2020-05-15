@@ -84,7 +84,7 @@ public class ActionFromUriFilter implements Filter {
             } catch (NullPointerException e) {
                 LOGGER.error("Impossible to create action handler object", e);
                 httpRequest.setAttribute("error", String.format("Requested address %s can't be processed by the server", uri));
-                httpRequest.getServletContext().getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(servletRequest, servletResponse);
+                httpRequest.getServletContext().getRequestDispatcher("/WEB-INF/jsp/error404.jsp").forward(servletRequest, servletResponse);
             }
         } else {
             LOGGER.error("Impossible to use HTTP filter");

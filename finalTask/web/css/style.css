@@ -83,13 +83,6 @@ header {
     justify-content: space-around;
 }
 
-.content-403 {
-    min-height: 100vh;
-    height: auto;
-    align-items: center;
-    justify-content: space-around;
-}
-
 .button-group-horizontal {
     display: flex;
     flex-direction: row;

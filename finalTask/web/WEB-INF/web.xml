@@ -41,7 +41,7 @@
     </filter-mapping>
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/jsp/error.jsp</location>
+        <location>/WEB-INF/jsp/error404.jsp</location>
     </error-page>
     <error-page>
         <error-code>403</error-code>
@@ -53,5 +53,4 @@
             <taglib-location>/WEB-INF/tld/custom.tld</taglib-location>
         </taglib>
     </jsp-config>
-
 </web-app>
