@@ -19,7 +19,6 @@ CREATE TABLE user (
 /*
  * таблицы-справочники:
  * - диспилины
- * - факультет
  * - аудитории
  */
 
@@ -137,10 +136,3 @@ CREATE TABLE tutor (
     CONSTRAINT fk_performance_student FOREIGN KEY (student_id) REFERENCES student (id),
     CONSTRAINT fk_performance_subject FOREIGN KEY (subject_id) REFERENCES subject (id)
  );
-
-CREATE TABLE leader (
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    student_id INTEGER NOT NULL,
-    CONSTRAINT pk_leader PRIMARY KEY (id),
-	CONSTRAINT fk_leader_student FOREIGN KEY (student_id) REFERENCES student (id)
-);

@@ -62,7 +62,7 @@ public class SecurityFilter implements Filter {
                         session.setAttribute("SecurityFilterMessage", "Access is forbidden");
                     }
                     request.setAttribute("error", "Access denied");
-                    request.getServletContext().getRequestDispatcher("/WEB-INF/jsp/error403.jsp.haml").forward(request, response);
+                    request.getServletContext().getRequestDispatcher("/WEB-INF/jsp/error403.jsp").forward(request, response);
                 }
             }
         } else {

@@ -96,10 +96,6 @@ VALUES
 (26, 2, 26),
 (27, 2, 27);
 
-INSERT INTO leader
-VALUES
-(1, 23);
-
 INSERT INTO classroom
 VALUES
 (1, 607, 100, 1, 1),

@@ -5,7 +5,7 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/student.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
     <title>Сменить пароль</title>
 </head>
 <body>

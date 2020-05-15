@@ -17,7 +17,7 @@
 
         <!-- Icon -->
         <div class="fadeIn first">
-            <img src="${pageContext.request.contextPath}/img/bsu.png" width="60" alt="bsu-logo"/>
+            <img src="${pageContext.request.contextPath}/images/bsu.png" width="60" alt="bsu-logo"/>
         </div>
 
         <!-- Login Form -->
