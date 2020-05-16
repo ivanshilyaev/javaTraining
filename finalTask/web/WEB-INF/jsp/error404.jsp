@@ -5,7 +5,7 @@
 
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/404.css">
-    <title>Error page</title>
+    <title>404</title>
 </head>
 <body class="bg-purple">
 

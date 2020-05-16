@@ -5,7 +5,7 @@
 
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/403.css">
-    <title>Error page</title>
+    <title>403</title>
 </head>
 <body>
 <%@page isErrorPage="true" %>

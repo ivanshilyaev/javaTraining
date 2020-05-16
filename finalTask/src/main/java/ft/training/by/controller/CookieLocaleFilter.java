@@ -28,18 +28,17 @@ public class CookieLocaleFilter implements Filter {
                 Cookie cookie = new Cookie("language", "ru_BY");
                 res.addCookie(cookie);
             } else {
-                boolean flag = true;
+                boolean notPresented = true;
                 for (Cookie cookie : cookies) {
                     res.addCookie(cookie);
-                    if (cookie.getName().equals("language")) flag = false;
+                    if (cookie.getName().equals("language")) notPresented = false;
                 }
-                if (flag) {
+                if (notPresented) {
                     Cookie cookie = new Cookie("language", "ru_BY");
                     res.addCookie(cookie);
                 }
             }
         }
-
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

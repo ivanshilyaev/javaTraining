@@ -1,10 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="ctg" uri="customTags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setLocale value="${cookie['language'].value}" scope="session"/>
+<fmt:setBundle basename="text"/>
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/student.css"/>
+    <title><fmt:message key="tutors"/></title>
 </head>
 <body>
 
@@ -14,11 +18,11 @@
     <div class="button-group-horizontal">
         <c:url value="/tutors/addTutor.html" var="addUrl"/>
         <form class="content-form" name="addTutor" method="POST" action="${addUrl}">
-            <input type="submit" value="Добавить преподавателя">
+            <input type="submit" value="<fmt:message key="addTutor"/>">
         </form>
         <c:url value="/tutors/deleteTutor.html" var="deleteUrl"/>
         <form class="content-form" name="deleteTutor" method="POST" action="${deleteUrl}">
-            <input type="submit" value="Удалить преподавателя">
+            <input type="submit" value="<fmt:message key="deleteTutor"/>">
         </form>
     </div>
     <br>
@@ -30,11 +34,11 @@
             <c:set var="index" value="1"/>
             <tr>
                 <th scope="col">№</th>
-                <th scope="col">Фамилия</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Отчество</th>
-                <th scope="col">Должность</th>
-                <th scope="col">Степень</th>
+                <th scope="col"><fmt:message key="surname"/></th>
+                <th scope="col"><fmt:message key="name"/></th>
+                <th scope="col"><fmt:message key="patronymic"/></th>
+                <th scope="col"><fmt:message key="position"/></th>
+                <th scope="col"><fmt:message key="degree"/></th>
             </tr>
             </thead>
             <tbody>
@@ -53,7 +57,7 @@
         </table>
     </c:if>
     <c:if test="${requestScope.listTutors.size() == 0}">
-        Список пуст!<br>
+        <fmt:message key="emptyList"/>!<br>
     </c:if>
 </div>
 
