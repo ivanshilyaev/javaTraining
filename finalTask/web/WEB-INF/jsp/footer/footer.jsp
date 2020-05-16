@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="ctg" uri="customTags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setLocale value="${cookie['language'].value}" scope="session"/>
+<fmt:setBundle basename="text"/>
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
@@ -20,7 +23,7 @@
 
 <div class="footer">
     <span class="copyright">&copy; Copyright 2020</span>
-    <p>Адрес: ул. Октябрьская, 10, 220030, г. Минск, Республика Беларусь</p>
+    <p><fmt:message key="address"/></p>
 </div>
 
 <script>

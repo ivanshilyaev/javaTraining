@@ -1,14 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib prefix="ctg" uri="customTags" %>
+<fmt:setLocale value="${cookie['language'].value}" scope="session"/>
+<fmt:setBundle basename="text"/>
 <html>
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css"/>
-    <title>Авторизация</title>
+    <title><fmt:message key="authorization"/></title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
         <form name="loginForm" method="POST" action="${loginUrl}">
             <input type="text" id="login" class="fadeIn second" name="login" placeholder="Логин">
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="Пароль">
-            <input type="submit" class="fadeIn fourth" value="Войти">
+            <input type="submit" class="fadeIn fourth" value="<fmt:message key="signIn"/>">
         </form>
         ${requestScope.message}
         <br>
