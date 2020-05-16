@@ -3,9 +3,9 @@ package ft.training.by.service.impl;
 import ft.training.by.bean.User;
 import ft.training.by.dao.interfaces.UserDao;
 import ft.training.by.dao.exception.DAOException;
+import ft.training.by.service.PasswordUtilities;
 import ft.training.by.service.exception.ServiceException;
 import ft.training.by.service.interfaces.UserService;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +54,8 @@ public class UserServiceImpl extends ServiceImpl implements UserService {
     public void update(User user) throws ServiceException {
         try {
             UserDao dao = transaction.createDao(UserDao.class);
+            String hashedPassword = PasswordUtilities.hashPassword(String.valueOf(user.getPassword())).orElse(null);
+            user.setPassword(hashedPassword.toCharArray());
             dao.update(user);
         } catch (DAOException e) {
             throw new ServiceException(e);

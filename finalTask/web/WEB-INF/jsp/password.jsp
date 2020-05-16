@@ -26,11 +26,11 @@
     <form class="add-form" name="updatePasswordForm" method="POST" action="${passwordUrl}"
           onsubmit="return validateChangePassword(this)">
         <input type="hidden" name="command" value="change_password">
-        <input type="text" name="old_password" placeholder="Старый пароль">
+        <input type="password" name="old_password" placeholder="Старый пароль">
         <br>
-        <input type="text" name="new_password" placeholder="Новый пароль">
+        <input type="password" name="new_password" placeholder="Новый пароль">
         <br>
-        <input type="text" name="new_password_again" placeholder="Новый пароль ещё раз">
+        <input type="password" name="new_password_again" placeholder="Новый пароль ещё раз">
         <br>
         <input type="submit" class="fadeIn fifth" value="Сохранить">
     </form>

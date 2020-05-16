@@ -1,6 +1,7 @@
 package ft.training.by.controller.action;
 
 import ft.training.by.bean.User;
+import ft.training.by.service.PasswordUtilities;
 import ft.training.by.service.interfaces.UserService;
 import ft.training.by.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
@@ -8,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
 
 public class ChangePasswordAction extends AuthorizedUserAction {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -24,20 +24,24 @@ public class ChangePasswordAction extends AuthorizedUserAction {
         String newPasswordAgain = request.getParameter(PARAM_NAME_NEW_PASSWORD_AGAIN);
         if (oldPassword != null && newPassword != null && newPasswordAgain != null) {
             User currentUser = (User) request.getSession().getAttribute("authorizedUser");
-            if (!Arrays.equals(currentUser.getPassword(), oldPassword.toCharArray())) {
-                request.setAttribute("passwordMessage", "Old password was entered incorrectly");
+            UserService userService = factory.createService(UserService.class);
+            User user = userService.read(currentUser.getId()).orElse(null);
+            if (!PasswordUtilities.verifyPassword(oldPassword, String.valueOf(user.getPassword()))) {
+                // "Old password was entered incorrectly"
+                request.setAttribute("passwordMessage", "Старый пароль был введён неверно");
                 return null;
             }
             if (!newPassword.equals(newPasswordAgain)) {
-                request.setAttribute("passwordMessage", "New password was repeated incorrectly");
+                // "New password was repeated incorrectly"
+                request.setAttribute("passwordMessage", "Новый пароль был повторён неверно");
                 return null;
             }
             if (oldPassword.equals(newPassword)) {
-                request.setAttribute("passwordMessage", "You've entered the same password");
+                // "You've entered the same password"
+                request.setAttribute("passwordMessage", "Вы ввели тот же самый пароль");
                 return null;
             }
             currentUser.setPassword(newPassword.toCharArray());
-            UserService userService = factory.createService(UserService.class);
             userService.update(currentUser);
             return new Forward("/logout.html");
         }

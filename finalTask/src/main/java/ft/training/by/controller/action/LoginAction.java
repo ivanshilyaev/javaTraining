@@ -5,6 +5,7 @@ import ft.training.by.bean.Student;
 import ft.training.by.bean.Tutor;
 import ft.training.by.bean.User;
 import ft.training.by.bean.enums.Role;
+import ft.training.by.service.PasswordUtilities;
 import ft.training.by.service.interfaces.AdministratorService;
 import ft.training.by.service.interfaces.StudentService;
 import ft.training.by.service.interfaces.TutorService;
@@ -54,7 +55,11 @@ public class LoginAction extends Action {
         request.getSession().setAttribute("address", address);
         if (login != null && password != null) {
             UserService userService = factory.createService(UserService.class);
+            String hashedPassword = PasswordUtilities.hashPassword(password).orElse(null);
             User user = userService.read(login, password.toCharArray()).orElse(null);
+            if (user == null) {
+                user = userService.read(login, hashedPassword.toCharArray()).orElse(null);
+            }
             if (user != null) {
                 // для привествия пользователя на главной странице
                 request.getSession().setAttribute("username", user.getName() + " " + user.getPatronymic());
@@ -93,7 +98,8 @@ public class LoginAction extends Action {
                         login, request.getRemoteAddr(), request.getRemoteHost(), request.getRemotePort()));
                 return new Forward("/index.html");
             } else {
-                request.setAttribute("message", "Unknown login or password");
+                // "Unknown login or password"
+                request.setAttribute("message", "Неверный логин или пароль");
                 LOGGER.info(String.format("User \"%s\" unsuccessfully tried to log in from %s (%s:%s)",
                         login, request.getRemoteAddr(), request.getRemoteHost(), request.getRemotePort()));
             }
