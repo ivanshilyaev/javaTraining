@@ -11,6 +11,12 @@ import java.util.List;
 public class FindAllUsersAction extends AdministratorAction {
     @Override
     public Forward exec(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+        try {
+            int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            request.setAttribute("pageNumber", pageNumber);
+        } catch (NumberFormatException e) {
+            request.setAttribute("pageNumber", 1);
+        }
         UserService userService = factory.createService(UserService.class);
         List<User> listUsers = userService.read();
         request.setAttribute("listUsers", listUsers);

@@ -66,7 +66,6 @@ public final class PasswordUtilities {
             SecretKeyFactory factory = SecretKeyFactory.getInstance(ALGORITHM);
             byte[] securePassword = factory.generateSecret(spec).getEncoded();
             return Optional.of(Base64.getEncoder().encodeToString(securePassword));
-
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             LOGGER.error("Exception encountered in hashPassword()");
             return Optional.empty();
