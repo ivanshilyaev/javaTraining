@@ -8,6 +8,9 @@ import ft.training.by.service.interfaces.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class Runner {
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -20,10 +23,11 @@ public class Runner {
 
     public static void initConnectionPool() {
         try {
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             ConnectionPool.getInstance().init(DB_URL,
                     DB_LOGIN, DB_PASSWORD, DB_POOL_START_ACTIVE,
                     DB_POOL_MAX_ACTIVE, DB_POOL_MAX_WAIT);
-        } catch (DAOException e) {
+        } catch (DAOException | SQLException e) {
             LOGGER.error(e);
         }
     }

@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             ConnectionPool.getInstance().init(DB_URL,
                     DB_LOGIN, DB_PASSWORD, DB_POOL_START_ACTIVE,
                     DB_POOL_MAX_ACTIVE, DB_POOL_MAX_WAIT);

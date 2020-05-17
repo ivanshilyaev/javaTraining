@@ -1,9 +1,6 @@
 package ft.training.by.bean;
 
 import ft.training.by.bean.enums.Role;
-
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Arrays;
 import java.util.Objects;
 
