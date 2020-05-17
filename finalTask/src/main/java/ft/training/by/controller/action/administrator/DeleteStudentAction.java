@@ -37,7 +37,12 @@ public class DeleteStudentAction extends AdministratorAction {
             groupNum = (int) request.getSession().getAttribute(PARAM_NAME_GROUP_NUMBER);
             courseNum = (int) request.getSession().getAttribute(PARAM_NAME_COURSE_NUMBER);
         }
-
+        try {
+            int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            request.setAttribute("pageNumber", pageNumber);
+        } catch (NumberFormatException e) {
+            request.setAttribute("pageNumber", 1);
+        }
         GroupService groupService = factory.createService(GroupService.class);
         Group group = groupService.findByGroupAndCourse(groupNum, courseNum).orElse(null);
         SubgroupService subgroupService = factory.createService(SubgroupService.class);

@@ -25,11 +25,11 @@ public class FindConcreteGroupAction extends AdministratorAction {
         try {
             groupNum = Integer.parseInt(request.getParameter(PARAM_NAME_GROUP_NUMBER));
             courseNum = Integer.parseInt(request.getParameter(PARAM_NAME_COURSE_NUMBER));
-            request.setAttribute("groupNum", groupNum);
-            request.setAttribute("courseNum", courseNum);
+            request.getSession().setAttribute("groupNum", groupNum);
+            request.getSession().setAttribute("courseNum", courseNum);
         } catch (NumberFormatException e) {
-            groupNum = (int) request.getAttribute(PARAM_NAME_GROUP_NUMBER);
-            courseNum = (int) request.getAttribute(PARAM_NAME_COURSE_NUMBER);
+            groupNum = (int) request.getSession().getAttribute(PARAM_NAME_GROUP_NUMBER);
+            courseNum = (int) request.getSession().getAttribute(PARAM_NAME_COURSE_NUMBER);
         }
         try {
             int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));

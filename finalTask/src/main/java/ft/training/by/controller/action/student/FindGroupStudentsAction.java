@@ -12,6 +12,12 @@ import java.util.List;
 public class FindGroupStudentsAction extends StudentAction {
     @Override
     public Forward exec(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+        try {
+            int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            request.setAttribute("pageNumber", pageNumber);
+        } catch (NumberFormatException e) {
+            request.setAttribute("pageNumber", 1);
+        }
         StudentService studentService = factory.createService(StudentService.class);
         Student student = (Student) request.getSession().getAttribute("authorizedStudent");
         List<Student> groupList = studentService.findByGroupCourseFaculty(student.getSubgroup().getGroup().getGroupNumber(),

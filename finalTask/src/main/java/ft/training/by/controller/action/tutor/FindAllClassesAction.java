@@ -17,6 +17,12 @@ import java.util.List;
 public class FindAllClassesAction extends TutorAction {
     @Override
     public Forward exec(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+        try {
+            int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            request.setAttribute("pageNumber", pageNumber);
+        } catch (NumberFormatException e) {
+            request.setAttribute("pageNumber", 1);
+        }
         Tutor tutor = (Tutor) request.getSession().getAttribute("authorizedTutor");
         TimetableService timetableService = factory.createService(TimetableService.class);
         List<Timetable> timetableList = timetableService.findByTutorId(tutor.getId());

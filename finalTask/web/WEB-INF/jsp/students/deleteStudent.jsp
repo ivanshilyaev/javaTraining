@@ -17,13 +17,13 @@
 
 <div class="content">
     <c:if test="${requestScope.groupList.size() != 0}">
-        <c:set var="groupList" value="${requestScope.groupList}"/>
+        <c:set var="timetableList" value="${requestScope.groupList}"/>
         <c:set var="rowsPerPage" value="20"/>
         <c:set var="pageNumber" value="${requestScope.pageNumber}"/>
         <c:set var="a">
-            <fmt:formatNumber value="${groupList.size()/rowsPerPage}" maxFractionDigits="0"/>
+            <fmt:formatNumber value="${timetableList.size()/rowsPerPage}" maxFractionDigits="0"/>
         </c:set>
-        <c:set var="b" value="${groupList.size()/rowsPerPage}"/>
+        <c:set var="b" value="${timetableList.size()/rowsPerPage}"/>
         <%--Считаем количество страниц--%>
         <c:choose>
             <c:when test="${a==0}">
@@ -55,7 +55,7 @@
 
             <c:set var="index" value="${1 + (pageNumber-1)*rowsPerPage}"/>
 
-            <c:forEach items="${groupList}" var="student" begin="${start}" end="${stop}">
+            <c:forEach items="${timetableList}" var="student" begin="${start}" end="${stop}">
                 <tr>
                     <td><c:out value="${index}"/></td>
                     <td><c:out value="${ student.user.surname }"/></td>
