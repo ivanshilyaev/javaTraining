@@ -12,6 +12,12 @@ import java.util.List;
 public class FindAllTutorsAction extends AdministratorAction {
     @Override
     public Forward exec(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+        try {
+            int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            request.setAttribute("pageNumber", pageNumber);
+        } catch (NumberFormatException e) {
+            request.setAttribute("pageNumber", 1);
+        }
         TutorService tutorService = factory.createService(TutorService.class);
         List<Tutor> listTutors = tutorService.read();
         listTutors.sort(Comparator.comparing(tutor -> tutor.getUser().getSurname()));
