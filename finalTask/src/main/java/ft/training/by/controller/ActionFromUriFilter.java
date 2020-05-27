@@ -70,8 +70,6 @@ public class ActionFromUriFilter implements Filter {
             LOGGER.debug(String.format("Starting to process request for URI \"%s\"", uri));
             int beginAction = contextPath.length();
             int endAction = uri.lastIndexOf('.');
-            System.out.println(contextPath);
-            System.out.println(uri);
             String actionName;
             if (endAction >= 0) {
                 actionName = uri.substring(beginAction, endAction);

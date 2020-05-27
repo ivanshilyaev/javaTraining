@@ -2,6 +2,10 @@ package ft.training.by.bean;
 
 import java.util.Objects;
 
+/**
+ * The {@code Student} class;
+ */
+
 public class Student extends Entity {
     private User user;
     private Subgroup subgroup;
