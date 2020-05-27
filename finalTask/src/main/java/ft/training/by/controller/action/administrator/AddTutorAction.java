@@ -44,6 +44,7 @@ public class AddTutorAction extends AdministratorAction {
                     Forward forward = new Forward("/tutors/listTutors.html");
                     forward.getAttributes().put("message",
                             "Новый преподаватель был успешно добавлен");
+                    forward.getAttributes().put("pageNumber", 1);
                     LOGGER.info(String.format("New tutor \"%s\" with identity %d has been added successfully",
                             tutor.getUser().getLogin(), tutor.getId()));
                     return forward;

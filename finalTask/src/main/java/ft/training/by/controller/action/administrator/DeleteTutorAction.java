@@ -41,6 +41,7 @@ public class DeleteTutorAction extends AdministratorAction {
                     Forward forward = new Forward("/tutors/listTutors.html");
                     forward.getAttributes().put("message",
                             "Преподаватель был успешно удалён");
+                    forward.getAttributes().put("pageNumber", 1);
                     LOGGER.info(String.format("User \"%s\" deleted user with identity %d", getAuthorizedUser().getLogin(), id));
                     return forward;
                 }

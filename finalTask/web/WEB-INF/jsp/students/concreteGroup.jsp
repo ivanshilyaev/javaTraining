@@ -9,7 +9,7 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
-    <title>${requestScope.courseNum} <fmt:message key="course"/> ${requestScope.groupNum} <fmt:message
+    <title>${sessionScope.courseNum} <fmt:message key="course"/> ${sessionScope.groupNum} <fmt:message
             key="group"/></title>
 </head>
 <body>
@@ -20,14 +20,14 @@
     <div class="button-group-horizontal">
         <c:url value="/students/addStudent.html" var="addUrl"/>
         <form class="content-form" name="addStudent" method="POST" action="${addUrl}">
-            <input type="hidden" name="groupNum" value="${requestScope.groupNum}">
-            <input type="hidden" name="courseNum" value="${requestScope.courseNum}">
+            <input type="hidden" name="groupNum" value="${sessionScope.groupNum}">
+            <input type="hidden" name="courseNum" value="${sessionScope.courseNum}">
             <input type="submit" value="<fmt:message key="addStudent"/>">
         </form>
         <c:url value="/students/deleteStudent.html" var="deleteUrl"/>
         <form class="content-form" name="deleteStudent" method="POST" action="${deleteUrl}">
-            <input type="hidden" name="groupNum" value="${requestScope.groupNum}">
-            <input type="hidden" name="courseNum" value="${requestScope.courseNum}">
+            <input type="hidden" name="groupNum" value="${sessionScope.groupNum}">
+            <input type="hidden" name="courseNum" value="${sessionScope.courseNum}">
             <input type="submit" value="<fmt:message key="deleteStudent"/>">
         </form>
     </div>

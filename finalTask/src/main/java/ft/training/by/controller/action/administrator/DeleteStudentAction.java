@@ -66,14 +66,12 @@ public class DeleteStudentAction extends AdministratorAction {
                 UserService userService = factory.createService(UserService.class);
                 boolean userDeleted = userService.delete(userId);
                 if (userDeleted) {
-                    request.getSession().removeAttribute(PARAM_NAME_GROUP_NUMBER);
-                    request.getSession().removeAttribute(PARAM_NAME_COURSE_NUMBER);
-
                     Forward forward = new Forward("/students/concreteGroup.html");
                     forward.getAttributes().put("message",
                             "Студент был успешно удалён");
                     forward.getAttributes().put("groupNum", groupNum);
                     forward.getAttributes().put("courseNum", courseNum);
+                    forward.getAttributes().put("pageNumber", 1);
                     LOGGER.info(String.format("User \"%s\" deleted user with identity %d", getAuthorizedUser().getLogin(), id));
                     return forward;
                 }

@@ -26,12 +26,12 @@ import java.util.Map;
 public class Controller extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    //    public static final String DB_URL = "jdbc:mysql://localhost:3306/account_db";
-//    public static final String DB_LOGIN = "application";
-//    public static final String DB_PASSWORD = "application_password";
-    public static final String DB_URL = "jdbc:mysql://b9867b33996001:348a29fc@eu-cdbr-west-03.cleardb.net/heroku_577b4e7ef42c15a";
-    public static final String DB_LOGIN = "b9867b33996001";
-    public static final String DB_PASSWORD = "348a29fc";
+    public static final String DB_URL = "jdbc:mysql://localhost:3306/account_db";
+    public static final String DB_LOGIN = "application";
+    public static final String DB_PASSWORD = "application_password";
+    //    public static final String DB_URL = "jdbc:mysql://b9867b33996001:348a29fc@eu-cdbr-west-03.cleardb.net/heroku_577b4e7ef42c15a";
+//    public static final String DB_LOGIN = "b9867b33996001";
+//    public static final String DB_PASSWORD = "348a29fc";
     public static final int DB_POOL_START_ACTIVE = 10;
     public static final int DB_POOL_MAX_ACTIVE = 1000;
     public static final int DB_POOL_MAX_WAIT = 0;

@@ -15,7 +15,7 @@
 <%@ include file="../header/adminHeader.jsp" %>
 
 <div class="content">
-    <c:url value="/students/addTutor.html" var="addUrl"/>
+    <c:url value="/tutors/addTutor.html" var="addUrl"/>
     <form class="add-form" name="addTutorForm" method="POST" action="${addUrl}">
         <label>
             <fmt:message key="surname"/> <br>

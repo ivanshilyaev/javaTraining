@@ -63,14 +63,12 @@ public class AddStudentAction extends AdministratorAction {
                 Student student = new Student(user, subgroup);
                 StudentService studentService = factory.createService(StudentService.class);
                 if (studentService.create(student) != -1) {
-                    request.getSession().removeAttribute(PARAM_NAME_GROUP_NUMBER);
-                    request.getSession().removeAttribute(PARAM_NAME_COURSE_NUMBER);
-
                     Forward forward = new Forward("/students/concreteGroup.html");
                     forward.getAttributes().put("message",
                             "Новый студент был успешно добавлен");
                     forward.getAttributes().put("groupNum", groupNum);
                     forward.getAttributes().put("courseNum", courseNum);
+                    forward.getAttributes().put("pageNumber", 1);
                     LOGGER.info(String.format("New student \"%s\" with identity %d has been added successfully",
                             student.getUser().getLogin(), student.getId()));
                     return forward;
