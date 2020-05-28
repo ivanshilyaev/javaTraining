@@ -26,7 +26,7 @@ public class ChangePasswordAction extends AuthorizedUserAction {
             User currentUser = (User) request.getSession().getAttribute("authorizedUser");
             UserService userService = factory.createService(UserService.class);
             User user = userService.read(currentUser.getId()).orElse(null);
-            if (!PasswordUtilities.verifyPassword(oldPassword, String.valueOf(user.getPassword()))) {
+            if (!PasswordUtilities.verifyPassword(oldPassword, String.valueOf(user.getPassword())) && !oldPassword.equals(String.valueOf(user.getPassword()))) {
                 // "Old password was entered incorrectly"
                 request.setAttribute("passwordMessage", "Старый пароль был введён неверно");
                 return null;
